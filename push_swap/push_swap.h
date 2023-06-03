@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:13 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/05/28 14:03:45 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:50:36 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
 typedef struct s_stack
 {
-	int				*stack;
+	int			*stack;
 	int				size;
 }	t_stack;
 
@@ -34,18 +37,18 @@ void	rrr(t_stack *a, t_stack *b);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);
-long	ft_atol(char *str);
+int		ft_atoi(char *str);
 int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlen(const char *str);
-t_stack	*store_input(int argc, char **argv);
-int		check_input(char *str);
-int		check_args(int argc, char **argv);
-int		*parse_input(int argc, char **argv);
 void	ft_error(void);
 int		ft_isspace(char c);
-void	process_arguments(int argc, char **argv);
+int		check_input(char *s);
+t_stack	*store_input(char *s);
+int		check_duplicates(t_stack *a);
+int		is_sorted(t_stack *a);
+void	sort_three(t_stack *a);
 
 #endif

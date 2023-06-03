@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 14:53:00 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/05/21 15:22:23 by aben-dhi         ###   ########.fr       */
+/*   Created: 2023/06/03 20:14:24 by aben-dhi          #+#    #+#             */
+/*   Updated: 2023/06/03 20:14:46 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rr(t_stack *a, t_stack *b)
+void	sort_five(t_stack *a, t_stack *b)
 {
-	ra(a);
-	rb(b);
-	printf("rr\n");
+	int i;
+
+	i = 0;
+	while (i < 2)
+	{
+		pb(a, b);
+		i++;
+	}
+	sort_three(a);
+	while (b->size)
+		pa(a, b);
 }

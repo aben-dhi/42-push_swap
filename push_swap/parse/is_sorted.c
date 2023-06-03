@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 14:53:00 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/05/21 15:22:23 by aben-dhi         ###   ########.fr       */
+/*   Created: 2023/06/03 19:44:47 by aben-dhi          #+#    #+#             */
+/*   Updated: 2023/06/03 19:45:12 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rr(t_stack *a, t_stack *b)
+int	is_sorted(t_stack *a)
 {
-	ra(a);
-	rb(b);
-	printf("rr\n");
+	int i;
+
+	i = 0;
+	while (i < a->size - 1)
+	{
+		if (a->stack[i] > a->stack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }

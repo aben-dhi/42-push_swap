@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 14:46:44 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 19:53:14 by aben-dhi         ###   ########.fr       */
+/*   Created: 2023/06/03 19:49:42 by aben-dhi          #+#    #+#             */
+/*   Updated: 2023/06/03 19:59:13 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra(t_stack *a)
+void sort_three(t_stack *a)
 {
-	int	i;
-	int	tmp;
-
-	i = 0;
-	if (a->size > 1)
+	while (!is_sorted(a))
 	{
-		tmp = a->stack[0];
-		while (i < a->size - 1)
+		if (a->stack[0] > a->stack[1] && a->stack[0] < a->stack[2])
 		{
-			a->stack[i] = a->stack[i + 1];
-			i++;
+			sa(a);
+			rra(a);
 		}
-		a->stack[i] = tmp;
+		else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2])
+		{
+			if (a->stack[1] > a->stack[2])
+			{
+				sa(a);
+				rra(a);
+			}
+			else
+				ra(a);
+		}
+		else if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2])
+		{
+			if (a->stack[1] > a->stack[2])
+				rra(a);
+			else
+				sa(a);
+		}
 	}
-	printf("ra\n");
 }
