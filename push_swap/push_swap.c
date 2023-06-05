@@ -28,6 +28,7 @@ char *ft_args(int argc, char **argv)
 		input = ft_strjoin(input, " ");
 		i++;
 	}
+	free(input);
 	return (input);
 }
 
@@ -44,35 +45,38 @@ int main(int argc, char **argv)
 	a->stack = NULL;
 	if (argc < 2)
 		return (0);
+	input = malloc(sizeof(char) * (argc - 1)); // Allocate memory for input
+	if (input == NULL)
+	{
+		free(input);
+		free_all(a, b);
+		ft_error();
+	}
+	// input[0] = '\0';
 	input = ft_args(argc, argv);
 	if (!check_input(input))
 	{
 		write(1, "Error\n", 7);
 		free(input);
-		free(a);
+		free_all(a, b);
 		return (1);
 	}
 	a = store_input(input);
 	free(input);
-	b->stack = malloc(sizeof(int) * a->size);
-	b->size = 0;
+	b->stack = malloc(sizeof(int) * a->size); // Allocate memory for b->stack
 	if (b->stack == NULL)
 	{
-		free(a->stack);
-		free(a);
-		free(b);
+		free_all(a, b);
 		ft_error();
 	}
 	if (check_duplicates(a) == 0)
 	{
-		free(a->stack);
-		free(a);
+		free_all(a, b);
 		ft_error();
 	}
 	if (is_sorted(a))
 	{
-		free(a->stack);
-		free(a);
+		free_all(a, b);
 		return (0);
 	}
 	else
@@ -87,9 +91,6 @@ int main(int argc, char **argv)
 		// else
 		// 	sort(a, b);
 	}
-	free(a->stack);
-	free(b->stack);
-	free(a);
-	free(b);
+    free_all(a, b);
 	return (0);
 }

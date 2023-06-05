@@ -16,5 +16,5 @@ void	ss(t_stack *a, t_stack *b)
 {
 	sa(a);
 	sb(b);
-	printf("ss\n");
+	write(1, "ss\n", 4);
 }

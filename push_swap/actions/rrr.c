@@ -16,5 +16,5 @@ void	rrr(t_stack *a, t_stack *b)
 {
 	rra(a);
 	rrb(b);
-	printf("rrr\n");
+	write(1, "rrr\n", 5);
 }

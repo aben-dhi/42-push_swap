@@ -14,9 +14,6 @@
 
 static int	charsep(char c, char sep)
 {
-	int	i;
-
-	i = 0;
 	if (c == sep || c == '\0')
 		return (1);
 	return (0);
@@ -83,7 +80,7 @@ char	**ft_split(char const *s, char c)
 	split = (char **)malloc(sizeof(char *) * (index + 1));
 	if (split == NULL)
 		return (NULL);
-		split[index] = 0;
+	split[index] = 0;
 	if (write_s(split, str, c) == NULL)
 		return (NULL);
 	return (split);

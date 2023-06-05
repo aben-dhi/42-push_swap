@@ -22,5 +22,5 @@ void	sb(t_stack *b)
 		b->stack[0] = b->stack[1];
 		b->stack[1] = tmp;
 	}
-	printf("sb\n");
+	write(1, "sb\n", 4);
 }

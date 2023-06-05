@@ -28,5 +28,5 @@ void	rb(t_stack *b)
 		}
 		b->stack[i] = tmp;
 	}
-	printf("rb\n");
+	write(1, "rb\n", 4);
 }

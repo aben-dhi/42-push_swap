@@ -28,5 +28,5 @@ void	pb(t_stack *a, t_stack *b)
 		a->size--;
 		b->size++;
 	}
-	printf("pb\n");
+	write(1, "pb\n", 4);
 }

@@ -28,5 +28,5 @@ void	rrb(t_stack *b)
 		}
 		b->stack[0] = tmp;
 	}
-	printf("rrb\n");
+	write(1, "rrb\n", 5);
 }

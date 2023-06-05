@@ -14,23 +14,24 @@
 
 void	sort_five(t_stack *a, t_stack *b)
 {
-	// int	*stack = a->stack;
+	int	*stack = a->stack;
 	int	i;
 
 	i = 0;
+
 	while (i < 2)
 	{
 		pb(a, b);
-		printf("sizeb : %d\n", b->size);
-		printf("sizea : %d\n", a->size);
+		// printf("sizeb : %d\n", b->size);
+		// printf("sizea : %d\n", a->size);
 		i++;
 	}
 	if (a->size == 3)
 		sort_three(a);
 	pa(a, b);
-	printf("sizeb : %d\n", b->size);
-	printf("sizea : %d\n", a->size);
+	// printf("sizeb : %d\n", b->size);
+	// printf("sizea : %d\n", a->size);
 	pa(a, b);
-	printf("sizeb : %d\n", b->size);
-	printf("sizea : %d\n", a->size);
+	// printf("sizeb : %d\n", b->size);
+	// printf("sizea : %d\n", a->size);
 }

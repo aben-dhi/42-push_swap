@@ -28,5 +28,5 @@ void	pa(t_stack *a, t_stack *b)
 		a->size++;
 		a->stack[0] = b->stack[0];
 	}
-	printf("pa\n");
+	write(1, "pa\n", 4);
 }
