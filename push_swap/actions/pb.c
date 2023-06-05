@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:40:47 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 19:53:09 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:05:40 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	pb(t_stack *a, t_stack *b)
 	i = a->size;
 	if (a->size > 0)
 	{
+		b->stack[0] = a->stack[0];
 		while (i > 0)
 		{
 			a->stack[i] = a->stack[i - 1];
@@ -26,7 +27,6 @@ void	pb(t_stack *a, t_stack *b)
 		}
 		a->size--;
 		b->size++;
-		b->stack[0] = a->stack[0];
 	}
 	printf("pb\n");
 }

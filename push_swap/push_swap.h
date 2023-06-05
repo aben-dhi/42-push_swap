@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:13 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 19:50:36 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:30:34 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ t_stack	*store_input(char *s);
 int		check_duplicates(t_stack *a);
 int		is_sorted(t_stack *a);
 void	sort_three(t_stack *a);
+void	sort_five(t_stack *a, t_stack *b);
+void	free_all(t_stack *a, t_stack *b);
+// void	sort(t_stack *a, t_stack *b);
 
 #endif

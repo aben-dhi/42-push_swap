@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:53 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 20:15:25 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/05 01:38:26 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
 	a = malloc(sizeof(t_stack));
 	b = malloc(sizeof(t_stack));
-	if (a == NULL)
+	if (a == NULL || b == NULL)
 		ft_error();
 	a->stack = NULL;
 	if (argc < 2)
@@ -54,6 +54,15 @@ int main(int argc, char **argv)
 	}
 	a = store_input(input);
 	free(input);
+	b->stack = malloc(sizeof(int) * a->size);
+	b->size = 0;
+	if (b->stack == NULL)
+	{
+		free(a->stack);
+		free(a);
+		free(b);
+		ft_error();
+	}
 	if (check_duplicates(a) == 0)
 	{
 		free(a->stack);
@@ -67,7 +76,20 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	else
-		sort_three(a);
+	{
+		printf("size: %d\n", a->size);
+		if (a->size == 2)
+			sa(a);
+		else if (a->size == 3)
+			sort_three(a);
+		else if (a->size == 5)
+			sort_five(a, b);
+		// else
+		// 	sort(a, b);
+	}
+	free(a->stack);
+	free(b->stack);
 	free(a);
+	free(b);
 	return (0);
 }
