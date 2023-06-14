@@ -43,7 +43,6 @@ t_stack	*store_input(char *s)
 	a->stack = malloc(sizeof(int) * num_elements);
 	if (a->stack == NULL)
 	{
-		free(a->stack);
 		free(a);
 		ft_error();
 	}

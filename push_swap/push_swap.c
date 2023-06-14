@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:53 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/05 01:38:26 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:58:22 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char *ft_args(int argc, char **argv)
 		input = ft_strjoin(input, " ");
 		i++;
 	}
-	free(input);
 	return (input);
 }
 
@@ -45,52 +44,52 @@ int main(int argc, char **argv)
 	a->stack = NULL;
 	if (argc < 2)
 		return (0);
-	input = malloc(sizeof(char) * (argc - 1)); // Allocate memory for input
-	if (input == NULL)
-	{
-		free(input);
-		free_all(a, b);
-		ft_error();
-	}
-	// input[0] = '\0';
 	input = ft_args(argc, argv);
 	if (!check_input(input))
 	{
 		write(1, "Error\n", 7);
 		free(input);
-		free_all(a, b);
+		free(a);
 		return (1);
 	}
 	a = store_input(input);
 	free(input);
-	b->stack = malloc(sizeof(int) * a->size); // Allocate memory for b->stack
+	b->stack = malloc(sizeof(int) * a->size);
+	b->size = 0;	
 	if (b->stack == NULL)
 	{
-		free_all(a, b);
+		free(a->stack);
+		free(a);
+		free(b);
 		ft_error();
 	}
 	if (check_duplicates(a) == 0)
 	{
-		free_all(a, b);
+		free(a->stack);
+		free(a);
 		ft_error();
 	}
 	if (is_sorted(a))
 	{
-		free_all(a, b);
+		free(a->stack);
+		free(a);
 		return (0);
 	}
 	else
 	{
-		printf("size: %d\n", a->size);
 		if (a->size == 2)
 			sa(a);
 		else if (a->size == 3)
 			sort_three(a);
 		else if (a->size == 5)
 			sort_five(a, b);
-		// else
-		// 	sort(a, b);
+		else if (a->size <= 100)
+			sort_100(a, b);
+		// printf("%d\n", get_min(a));
 	}
-    free_all(a, b);
+	free(a->stack);
+	free(b->stack);
+	free(a);
+	free(b);
 	return (0);
 }

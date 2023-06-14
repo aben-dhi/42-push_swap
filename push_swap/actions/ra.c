@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:46:44 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 19:53:14 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/11 22:06:45 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ra(t_stack *a)
 	int	tmp;
 
 	i = 0;
+	tmp = 0;
 	if (a->size > 1)
 	{
 		tmp = a->stack[0];
@@ -28,5 +29,6 @@ void	ra(t_stack *a)
 		}
 		a->stack[i] = tmp;
 	}
-	write(1, "ra\n", 4);
+	a->stack[i] = tmp;
+	write(1, "ra\n", 3);
 }

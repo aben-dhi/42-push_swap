@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:13 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/05 15:30:34 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/14 20:31:09 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 typedef struct s_stack
 {
 	int			*stack;
-	int				size;
+	int			size;
+	int			top;
 }	t_stack;
 
 void	pa(t_stack *a, t_stack *b);
@@ -52,6 +53,11 @@ int		is_sorted(t_stack *a);
 void	sort_three(t_stack *a);
 void	sort_five(t_stack *a, t_stack *b);
 void	free_all(t_stack *a, t_stack *b);
+void	sort_100(t_stack *a, t_stack *b);
+int		get_min(t_stack *a);
+int		get_max(t_stack *a);
+void	sort_big(t_stack *a, t_stack *b);
+void	sort_big_parttwo(t_stack *a, t_stack *b, int big);
 // void	sort(t_stack *a, t_stack *b);
 
 #endif

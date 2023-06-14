@@ -58,7 +58,7 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	nb = conversion(str, i);
-	// if (nb > 2147483647 || nb < -2147483648)
-	// 	return (0);
+	if (nb > 2147483647 || nb < -2147483648)
+		return (0);
 	return (sign * nb);
 }
