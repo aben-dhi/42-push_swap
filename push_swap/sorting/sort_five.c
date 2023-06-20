@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 20:14:24 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/12 13:34:41 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 00:09:52 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_five(t_stack *a, t_stack *b)
 			i++;
 		}
 		else if (a->stack[a->size - 1] == min || a->stack[a->size - 2] == min)
-			rra(a);
+			rra(a, 1);
 		else
 			ra(a);
 		if (p == 2)

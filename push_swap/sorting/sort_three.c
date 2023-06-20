@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 19:49:42 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/13 17:54:58 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 00:09:35 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,22 @@ int	get_min(t_stack *a)
 	return (min);
 }
 
-int	get_max(t_stack *a)
+int get_max(t_stack *a)
 {
-	int	i;
-	int	max;
+    int i = 0;
+    int max = a->stack[0];
 
-	i = 0;
-	max = a->stack[0];
-	while (i < a->size)
-	{
-		if (a->stack[i] > max)
-			max = a->stack[i];
-		i++;
-	}
-	return (max);
+    if (a->size == 0)
+        return -1; // Handle the case when the stack is empty
+
+    while (i < a->size)
+    {
+        if (a->stack[i] > max)
+            max = a->stack[i];
+        i++;
+    }
+
+    return max;
 }
 
 void	sort_three(t_stack *a)
@@ -64,7 +66,7 @@ void	sort_three(t_stack *a)
 		}
 		else if (a->stack[0] == min && a->stack[1] == max && !is_sorted(a))
 		{
-			rra(a);
+			rra(a, 1);
 			sa(a);
 		}
 		else if (a->stack[1] == min && a->stack[2] == max && !is_sorted(a))
@@ -72,6 +74,7 @@ void	sort_three(t_stack *a)
 			sa(a);
 		}
 		else if (a->stack[0] != min && a->stack[1] == max && !is_sorted(a))
-			rra(a);
+			rra(a, 1);
 	}
+	printf("max = %d\n", max);
 }

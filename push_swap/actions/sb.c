@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:38:43 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/11 22:05:42 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 01:22:16 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	sb(t_stack *b)
 {
 	int	tmp;
 
+	tmp = 0;
 	if (b->size > 1)
 	{
 		tmp = b->stack[0];
 		b->stack[0] = b->stack[1];
 		b->stack[1] = tmp;
+		write(1, "sb\n", 3);
 	}
-	write(1, "sb\n", 3);
 }

@@ -6,27 +6,33 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:55:13 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/11 22:06:24 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 01:19:42 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rra(t_stack *a)
+void	rra(t_stack *a, int r)
 {
-	int	tmp;
 	int	i;
+	int	tmp;
+	int	tmp2;
+	int	tmp3;
 
+	i = 0;
 	if (a->size > 1)
 	{
-		i = a->size - 1;
+		tmp3 = a->stack[a->size - 1];
 		tmp = a->stack[i];
-		while (i > 0)
+		while (i < a->size)
 		{
-			a->stack[i] = a->stack[i - 1];
-			i--;
+			tmp2 = a->stack[i + 1];
+			a->stack[i + 1] = tmp;
+			tmp = tmp2;
+			i++;
 		}
-		a->stack[0] = tmp;
+		a->stack[0] = tmp3;
 	}
-	write(1, "rra\n", 4);
+	if (r == 1)
+		write(1, "rra\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:50:44 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/11 22:06:39 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 00:52:03 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	rb(t_stack *b)
 	if (b->size > 1)
 	{
 		tmp = b->stack[0];
-		while (i < b->size - 1)
+		while (i < b->size)
 		{
 			b->stack[i] = b->stack[i + 1];
 			i++;
 		}
-		b->stack[i] = tmp;
+		b->stack[b->size - 1] = tmp;
+		write(1, "rb\n", 3);
 	}
-	write(1, "rb\n", 3);
 }

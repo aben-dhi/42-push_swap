@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:04:04 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 19:39:01 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:07:08 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_stack	*store_input(char *s)
 	while (split[i] != NULL)
 	{
 		a->stack[i] = ft_atoi(split[i]);
-		if (ft_atoi(split[i]) == 0 && split[i][0] != '0')
+		if (ft_atoi(split[i]) == 0 && split[i][0] != '0'
+		&& !(split[i][0] == '-' && split[i][1] == '\0'))
 		{
 			free(a->stack);
 			free(a);

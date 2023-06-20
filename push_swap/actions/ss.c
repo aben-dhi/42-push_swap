@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:39:21 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/11 22:05:51 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 01:22:54 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 
 void	ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sb(b);
+	int	tmp;
+
+	tmp = 0;
+	if (a->size > 1)
+	{
+		tmp = a->stack[0];
+		a->stack[0] = a->stack[1];
+		a->stack[1] = tmp;
+	}
+	if (b->size > 1)
+	{
+		tmp = b->stack[0];
+		b->stack[0] = b->stack[1];
+		b->stack[1] = tmp;
+	}
 	write(1, "ss\n", 3);
 }
