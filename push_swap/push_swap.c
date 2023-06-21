@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:53 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/20 17:55:51 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/21 23:17:09 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,25 @@ char	*ft_args(int argc, char **argv)
 	while (i < argc)
 	{
 		tmp = input;
-		input = ft_strjoin(input, argv[i]);
+		input = ft_strjoin1(input, argv[i]);
 		free(tmp);
 		tmp = input;
-		input = ft_strjoin(input, " ");
+		input = ft_strjoin1(input, " ");
 		free(tmp);
 		i++;
 	}
 	return (input);
 }
 
-void	norm(t_stack **a, t_stack **b, char *input, int argc)
+void	norm(t_stack **a, t_stack **b, char *input)
 {
-	if (argc < 2)
-	{
-		free_all(*a, *b);
-		free(input);
-		return ;
-	}
-	if (!check_input(input))
+	if (check_input(input) == 0)
 	{
 		free_all(*a, *b);
 		free(input);
 		ft_error();
 	}
-	*a = store_input(input);
-	while (1);
+	store_input(a, input);
 	free(input);
 	(*b)->stack = NULL;
 	(*b)->stack = malloc(sizeof(int) * (*a)->size);
@@ -67,12 +60,14 @@ void	norm(t_stack **a, t_stack **b, char *input, int argc)
 	}
 }
 
-int	main(int argc, char **argv)
+int	mmain(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
 	char	*input;
 
+	if (argc < 2)
+		return (0);
 	a = malloc(sizeof(t_stack));
 	b = malloc(sizeof(t_stack));
 	if (a == NULL || b == NULL)
@@ -81,9 +76,7 @@ int	main(int argc, char **argv)
 	a->rank = NULL;
 	b->rank = NULL;
 	input = ft_args(argc, argv);
-
-	norm(&a, &b, input, argc);
-	while (1);
+	norm(&a, &b, input);
 	if (is_sorted(a))
 	{
 		free_all(a, NULL);
@@ -91,8 +84,12 @@ int	main(int argc, char **argv)
 	}
 	else
 		sort(a, b);
-	// while (1);
-	// exit(0);
-	// free_all(a, b);
+	return (0);
+}
+
+int main(int argc, char **argv)
+{
+	mmain(argc, argv);
+	while(1);
 	return (0);
 }

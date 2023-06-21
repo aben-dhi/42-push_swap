@@ -8,7 +8,7 @@ OBJS	= $(SRCS:.c=.o)
 
 CC		= cc
 
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror 
 
 .PHONY = all clean fclean re
 

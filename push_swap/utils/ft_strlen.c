@@ -6,13 +6,13 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:24:26 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/05/21 15:23:17 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:09:54 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen1(const char *str)
 {
 	int	i;
 

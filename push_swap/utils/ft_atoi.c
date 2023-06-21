@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:26:20 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/03 19:37:01 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:44:28 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-int	conversion(char *str, int i)
+long	conversion(char *str, int i)
 {
-	int	nb;
-	int	digit;
+	long	nb;
 
 	nb = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		digit = str[i] - '0';
-		if (nb > INT_MAX / 10 || (nb == INT_MAX / 10 && digit > INT_MAX % 10))
-			ft_error();
+		if (nb > 2147483649)
+			break ;
 		nb = nb * 10;
 		nb = nb + str[i] - 48;
 		i++;
@@ -38,11 +36,11 @@ int	conversion(char *str, int i)
 	return (nb);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, int *err)
 {
-	int	i;
-	int	sign;
-	int	nb;
+	int		i;
+	int		sign;
+	long	nb;
 
 	i = 0;
 	sign = 1;
@@ -58,7 +56,7 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	nb = conversion(str, i);
-	if (nb > 2147483647 || nb < -2147483648)
-		return (0);
+	if ((nb > 2147483647 && sign == 1) || (nb > 2147483648 && sign == -1))
+		*err = 1;
 	return (sign * nb);
 }

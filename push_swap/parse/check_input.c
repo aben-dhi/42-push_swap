@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:04:04 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/20 17:54:43 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:41:03 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ int	check_input(char *s)
 	while (s[i])
 	{
 		if (ft_isdigit(s[i]) || s[i] == ' ' || s[i] == '-' || s[i] == '+')
+		{
+			if ((s[i] == '-' || s[i] == '+')
+				&& (s[i + 1] == '-' || s[i + 1] == '+'))
+				return (0);
+			if ((s[i] == '-' || s[i] == '+') && !ft_isdigit(s[i + 1]))
+				return (0);
 			i++;
+		}
 		else
 			return (0);
 	}
@@ -30,18 +37,14 @@ int	check_input(char *s)
 void	split_elements(t_stack *a, char **split)
 {
 	int	i;
+	int	err;
 
+	err = 0;
 	i = 0;
 	while (split[i] != NULL)
 	{
-		a->stack[i] = ft_atoi(split[i]);
-		if (ft_atoi(split[i]) == 0 && split[i][0] != '0'
-		&& !(split[i][0] == '-' && split[i][1] == '\0'))
-		{
-			free_all(a, NULL);
-			ft_error();
-		}
-		if (a->stack[i] > 2147483647 || a->stack[i] < -2147483648)
+		a->stack[i] = ft_atoi(split[i], &err);
+		if (err == 1)
 		{
 			free_all(a, NULL);
 			ft_error();
@@ -50,34 +53,31 @@ void	split_elements(t_stack *a, char **split)
 	}
 }
 
-t_stack	*store_input(char *s)
+void	store_input(t_stack **a, char *s)
 {
 	char	**split;
 	int		num_elements;
-	t_stack	*a;
 
-	a = malloc(sizeof(t_stack));
-	if (a == NULL)
+	if (*a == NULL)
 		ft_error();
 	split = ft_split(s, ' ');
 	num_elements = 0;
 	while (split[num_elements])
 		num_elements++;
-	a->size = num_elements;
-	a->stack = malloc(sizeof(int) * num_elements);
-	if (a->stack == NULL)
+	(*a)->size = num_elements;
+	(*a)->stack = malloc(sizeof(int) * num_elements);
+	if ((*a)->stack == NULL)
 	{
-		free(a);
+		free(*a);
 		ft_error();
 	}
-	split_elements(a, split);
+	split_elements(*a, split);
 	while (num_elements + 1)
 	{
 		free(split[num_elements]);
 		num_elements--;
 	}
 	free(split);
-	return (a);
 }
 
 int	check_duplicates(t_stack *a)
