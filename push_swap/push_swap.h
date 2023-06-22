@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:13 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/21 18:10:13 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:14:02 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_atoi(char *str, int *err);
 int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 int		ft_strcmp(char *s1, char *s2);
-char	*ft_strjoin1(char const *s1, char const *s2);
+char	*ft_strjoin1(char *s1, char *s2);
 int		ft_strlen1(const char *str);
 char	*ft_strdup(const char *s1);
 

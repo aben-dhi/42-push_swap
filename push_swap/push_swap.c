@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:52:53 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/21 23:17:09 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:34:02 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_args(int argc, char **argv)
 	char	*input;
 	char	*tmp;
 
-	input = ft_strdup("");
+	input = ft_strdup("        ");
 	if (input == NULL)
 		ft_error();
 	i = 1;
@@ -43,24 +43,26 @@ void	norm(t_stack **a, t_stack **b, char *input)
 		free(input);
 		ft_error();
 	}
+	// free(*a);
 	store_input(a, input);
-	free(input);
 	(*b)->stack = NULL;
 	(*b)->stack = malloc(sizeof(int) * (*a)->size);
 	(*b)->size = 0;
 	if ((*b)->stack == NULL)
 	{
 		free_all(*a, *b);
+		free(input);
 		ft_error();
 	}
 	if (check_duplicates(*a) == 0)
 	{
 		free_all(*a, *b);
+		free(input);
 		ft_error();
 	}
 }
 
-int	mmain(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -79,17 +81,22 @@ int	mmain(int argc, char **argv)
 	norm(&a, &b, input);
 	if (is_sorted(a))
 	{
-		free_all(a, NULL);
+		free_all(a, b);
+		free(input);
 		return (0);
 	}
 	else
+	{
+		free(input);
 		sort(a, b);
+	}
+	// free(a->stack);
 	return (0);
 }
 
-int main(int argc, char **argv)
-{
-	mmain(argc, argv);
-	while(1);
-	return (0);
-}
+// int main(int argc, char **argv)
+// {
+// 	mmain(argc, argv);
+// 	while(1);
+// 	return (0);
+// }

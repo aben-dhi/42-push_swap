@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 19:49:42 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/20 15:27:09 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:29:52 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	sort_three(t_stack *a)
 
 	min = get_min(a);
 	max = get_max(a);
-	if (is_sorted(a))
-		return ;
+	// if (is_sorted(a))
+	// 	return ;
 	if (!is_sorted(a))
 	{
 		conditions(a, min, max);

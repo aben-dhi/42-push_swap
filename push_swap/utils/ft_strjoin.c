@@ -6,13 +6,13 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:59:49 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/21 18:11:53 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:19:14 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	*ft_strjoin1(char const *s1, char const *s2)
+char	*ft_strjoin1(char *s1, char *s2)
 {
 	char	*str;
 	int		i;

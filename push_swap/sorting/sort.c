@@ -6,7 +6,7 @@
 /*   By: aben-dhi <aben-dhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 12:21:27 by aben-dhi          #+#    #+#             */
-/*   Updated: 2023/06/20 15:24:08 by aben-dhi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:30:50 by aben-dhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	sort(t_stack *a, t_stack *b)
 		sort_small(a, b);
 	else
 		sort_big(a, b);
+	free_all(a, b);
 }
